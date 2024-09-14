@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GERENCIAMENTO_DE_PESSOAS.API.Controllers;
 
-[ApiController]
+[ApiController ]
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
 {
