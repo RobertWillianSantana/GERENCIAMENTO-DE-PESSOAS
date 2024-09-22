@@ -1,5 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <ProjectReference Include="..\GERENCIAMENTO-DE-PESSOAS.CORE\GERENCIAMENTO-DE-PESSOAS.CORE.csproj" />
+    <ProjectReference Include="..\GERENCIAMENTO-DE-PESSOAS.DATA\GERENCIAMENTO-DE-PESSOAS.DATA.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <RootNamespace>GERENCIAMENTO_DE_PESSOAS.MANAGER</RootNamespace>

@@ -8,8 +8,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Bond.CSharp" Version="11.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.20" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.20">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.20" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Venflow.NewtonsoftJson" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GERENCIAMENTO-DE-PESSOAS.CORE\GERENCIAMENTO-DE-PESSOAS.CORE.csproj" />
+    <ProjectReference Include="..\GERENCIAMENTO-DE-PESSOAS.MANAGER\GERENCIAMENTO-DE-PESSOAS.MANAGER.csproj" />
+    <ProjectReference Include="..\GERENCIAMENTO-DE-PESSOAS.DATA\GERENCIAMENTO-DE-PESSOAS.DATA.csproj" />
   </ItemGroup>
 
 </Project>
