@@ -11,6 +11,8 @@ namespace GERENCIAMENTO_DE_PESSOAS.CORE.Interfaces.Repositorio
     {
         Task AddPessoasAsync(string Nome, string CPF, string Cidade, string Estado, string Formacao);
         Task <List<PessoaDTO>> ObterTodasAsPessoasAsync();
+        Task<Pessoa?> ObterPessoaPorIdAsync(int id);
+        Task<bool> EditarUmaPessoaAsync(int id, Pessoa pessoa);
         Task RemoverPessoaAsync(int id);
     }
 }

@@ -1,5 +1,3 @@
-using System.Security.Cryptography;
-using Dapper;
 using GERENCIAMENTO_DE_PESSOAS.CORE.DTO;
 using GERENCIAMENTO_DE_PESSOAS.CORE.Entidades;
 using GERENCIAMENTO_DE_PESSOAS.CORE.Interfaces.Repositorio;
@@ -34,6 +32,44 @@ namespace GERENCIAMENTO_DE_PESSOAS.DATA.Repositorios
             await _dbcontext.SaveChangesAsync();
         }
 
+        public async Task<bool> EditarUmaPessoaAsync(int id, Pessoa pessoa)
+        {
+            // Verifica se a pessoa com o ID especificado existe
+            var pessoaExistente = await _dbcontext.Pessoas.FindAsync(id);
+
+            if (pessoaExistente == null)
+            {
+                // Retorna falso se a pessoa não for encontrada
+                return false;
+            }
+
+            // Atualiza os campos da pessoa existente
+            pessoaExistente.Nome = pessoa.Nome;
+            pessoaExistente.CPF = pessoa.CPF;
+            pessoaExistente.Cidade = pessoa.Cidade;
+            pessoaExistente.Estado = pessoa.Estado;
+            pessoaExistente.Formacao = pessoa.Formacao;
+
+            try
+            {
+                // Tenta salvar as mudanças no banco de dados
+                await _dbcontext.SaveChangesAsync();
+                return true; // Retorna true se a edição for bem-sucedida
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                // Lança exceção em caso de erro de concorrência
+                throw;
+            }
+        }
+
+
+        public async Task<Pessoa?> ObterPessoaPorIdAsync(int id)
+        {
+            var pessoa = await _dbcontext.Pessoas.FindAsync(id);
+            return pessoa;
+        }
+
         public async Task<List<PessoaDTO>> ObterTodasAsPessoasAsync()
         {
             return await _dbcontext.Pessoas.Select(p => new PessoaDTO
@@ -54,5 +90,7 @@ namespace GERENCIAMENTO_DE_PESSOAS.DATA.Repositorios
 
             await _dbcontext.SaveChangesAsync();
         }
+
+
     }
 }
