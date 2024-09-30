@@ -34,6 +34,23 @@ namespace GERENCIAMENTO_DE_PESSOAS.DATA.Repositorios
             await _dbcontext.SaveChangesAsync();
         }
 
+        public async Task<PessoaDTO> ObterPessoaPorIdAsync(int id)
+        {
+            var pessoa = await _dbcontext.Pessoas.FindAsync(id);
+
+            var pessoaDTO = new PessoaDTO()
+            {
+                Nome = pessoa.Nome,
+                CPF = pessoa.CPF,
+                Cidade = pessoa.Cidade,
+                Estado = pessoa.Estado,
+                Formacao = pessoa.Formacao
+            };
+
+            return pessoaDTO;
+
+        }
+
         public async Task<List<PessoaDTO>> ObterTodasAsPessoasAsync()
         {
             return await _dbcontext.Pessoas.Select(p => new PessoaDTO

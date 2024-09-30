@@ -31,6 +31,15 @@ namespace GERENCIAMENTO_DE_PESSOAS.API.Controllers
             return Ok(pessoas);
         }
 
+        [HttpGet("obter-pessoa-por-id")]
+        public async Task<IActionResult> GetPessoasById([FromQuery] int id)
+        {
+            var pessoas = await _service.ObterPessoaPorIdAsync(id);
+
+            return Ok(pessoas);
+
+        }
+
         [HttpDelete]
         public async Task<IActionResult> DeletarPessoa([FromQuery] int id)
         {

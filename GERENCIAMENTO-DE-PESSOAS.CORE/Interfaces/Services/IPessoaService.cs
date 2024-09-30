@@ -11,6 +11,7 @@ namespace GERENCIAMENTO_DE_PESSOAS.CORE.Interfaces.Services
     {
         Task AddPessoasAsync(PessoaDTO pessoaDTO);
         Task <List<PessoaDTO>> ObterTodasAsPessoasAsync();
+        Task<PessoaDTO> ObterPessoaPorIdAsync(int id);
         Task RemovePessoaAsync(int id);
     }
 }

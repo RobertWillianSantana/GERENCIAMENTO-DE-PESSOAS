@@ -19,6 +19,11 @@ namespace GERENCIAMENTO_DE_PESSOAS.MANAGER.Services
             await _repository.AddPessoasAsync(pessoaDTO.Nome, pessoaDTO.CPF, pessoaDTO.Cidade, pessoaDTO.Estado, pessoaDTO.Formacao);
         }
 
+        public async Task<PessoaDTO> ObterPessoaPorIdAsync(int id)
+        {
+            return await _repository.ObterPessoaPorIdAsync(id);
+        }
+
         public async Task<List<PessoaDTO>> ObterTodasAsPessoasAsync()
         {
             var pessoas = await _repository.ObterTodasAsPessoasAsync();
